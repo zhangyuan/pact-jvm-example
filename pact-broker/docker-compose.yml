@@ -1,0 +1,11 @@
+version: '2.0'
+services: 
+  pack-broker:
+    image: pactfoundation/pact-broker:2
+    environment: 
+      PACT_BROKER_BASIC_AUTH_USERNAME: pact
+      PACT_BROKER_BASIC_AUTH_PASSWORD: pact
+      PACT_BROKER_DATABASE_ADAPTER: sqlite
+      PACT_BROKER_DATABASE_NAME: pact_broker.sqlite
+    ports: 
+      - 9292:9292
