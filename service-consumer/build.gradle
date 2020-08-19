@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.3.3.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
+    id "au.com.dius.pact" version "4.1.0"
 }
 
 
@@ -16,11 +17,21 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'au.com.dius.pact.consumer:junit5:4.1.0'
+    implementation 'au.com.dius:pact-jvm-consumer-junit5:4.0.10'
+    testCompile "com.github.tomakehurst:wiremock-jre8:2.27.0"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 }
 test {
     useJUnitPlatform()
+}
+
+pact {
+    publish {
+        pactBrokerUrl = 'http://127.0.0.' +
+                '1:9292'
+        pactBrokerUsername = "pact"
+        pactBrokerPassword = "pact"
+    }
 }

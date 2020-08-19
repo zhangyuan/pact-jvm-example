@@ -6,6 +6,6 @@ services:
       PACT_BROKER_BASIC_AUTH_USERNAME: pact
       PACT_BROKER_BASIC_AUTH_PASSWORD: pact
       PACT_BROKER_DATABASE_ADAPTER: sqlite
-      PACT_BROKER_DATABASE_NAME: pact_broker.sqlite
+      PACT_BROKER_DATABASE_NAME: /tmp/pact_broker.sqlite
     ports: 
       - 9292:9292
